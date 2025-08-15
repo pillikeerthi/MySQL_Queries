@@ -55,3 +55,18 @@ Employees.DeptID = Departments.DeptID GROUP BY DeptName;
 -- 10. Find departments having more than 1 employee.
 SELECT DeptName, COUNT(*) AS EmployeeCount FROM Employees JOIN Departments ON
 Employees.DeptID=Departments.DeptID GROUP BY DeptName HAVING COUNT(*) >1;
+
+-- 11. Display employees whose names start with 'A'.
+SELECT * FROM Employees WHERE EmpName LIKE 'A%';
+
+-- 12. Find employees whose salary is between 45,000 and 60,000.alter
+SELECT * FROM Employees WHERE Salary BETWEEN 45000 AND 60000;
+
+-- 13. Show the department name of each employee.
+SELECT e.EmpName, d.DeptName FROM Employees e JOIN Departments d ON e.DeptID = d.DeptID;
+
+-- 14. Find the number of employees in each department.
+SELECT d.DeptID, d.DeptName, COUNT(*) AS EmployeeCount FROM Employees e JOIN Departments d ON e.DeptID = d.DeptID GROUP BY d.DeptID, d.DeptName;
+
+-- 15. Display all employees, including those without a department.
+SELECT e.EmpName, e.DeptID, d.DeptName FROM Employees e LEFT JOIN Departments d ON e.DeptID = d.DeptID;
